@@ -1,0 +1,74 @@
+/* @import "tailwindcss";
+
+@theme {
+  --color-g3-purple: #3A0164;
+  --color-g3-gold: #E9A805;
+  --color-g3-light-purple: #BD98F7;
+  --color-g3-pink: #EC4899;
+  --color-g3-light-pink: #FCE7F3;
+  --color-g3-night: #0F001C;
+  --color-g3-deep: #1A002E;
+  --color-g3-mid: #2D0A4E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #0F001C;
+  color: #ffffff;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+} */
+
+
+
+@import "tailwindcss";
+
+@theme {
+  --color-g3-purple: #3A0164;
+  --color-g3-gold: #E9A805;
+  --color-g3-light-purple: #BD98F7;
+  --color-g3-pink: #EC4899;
+  --color-g3-light-pink: #FCE7F3;
+  --color-g3-night: #0F001C;
+  --color-g3-deep: #1A002E;
+  --color-g3-mid: #2D0A4E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0F001C;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #0F001C;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  background: #0F001C;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

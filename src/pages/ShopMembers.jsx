@@ -183,7 +183,7 @@ function Shop() {
       </section>
 
       {/* CATEGORY NAV */}
-      <section className="sticky top-[100px] z-30 border-b border-white/10 bg-white/5/95 backdrop-blur-xl">
+      <section className="top-[100px] z-30 border-b border-white/10 bg-white/5/95 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl overflow-x-auto px-4 sm:px-6 lg:px-8">
           <div className="flex min-w-max items-center gap-2 py-4">
 
@@ -209,7 +209,7 @@ function Shop() {
                 className={`rounded-full px-5 py-2.5 cursor-pointer text-sm font-bold transition ${
                   selectedCategory === category.id
                     ? "bg-g3-pink text-white"
-                    : "bg-gray-100 text-white/55 hover:bg-g3-light-pink hover:text-g3-pink"
+                    : "bg-gray-100 text-black/55 hover:bg-g3-light-pink hover:text-g3-pink"
                 }`}
               >
                 {category.name}

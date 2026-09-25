@@ -72,3 +72,27 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Custom pink horizontal scrollbar for product rows */
+.scrollbar-g3 {
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #EC4899 transparent; /* thumb track */
+}
+
+.scrollbar-g3::-webkit-scrollbar {
+  height: 6px;                        /* horizontal bar height */
+}
+
+.scrollbar-g3::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.scrollbar-g3::-webkit-scrollbar-thumb {
+  background: #EC4899;                /* g3-pink */
+  border-radius: 999px;
+}
+
+.scrollbar-g3::-webkit-scrollbar-thumb:hover {
+  background: #db2777;                /* slightly darker pink */
+}

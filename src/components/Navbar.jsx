@@ -69,13 +69,6 @@ function Navbar() {
                 </Link>
 
                 {/* JOIN */}
-                <Link
-                  to="/register"
-                  className="flex h-12 items-center gap-2 rounded-full bg-g3-gold px-5 text-sm font-black text-[#0F001C] transition hover:bg-white"
-                >
-                  <UserPlus size={18} />
-                  <span>Join G3 Lounge</span>
-                </Link>
               </>
             )}
 

@@ -44,10 +44,8 @@
 
 
 import { ChevronRight } from "lucide-react";
-
 import { Link } from "react-router-dom";
-
-import ProductCardMembers from "./ProductCardMembers";
+import ProductCard from "./ProductCard";
 
 function ProductRow({ category, products }) {
   if (!products.length) return null;
@@ -60,11 +58,11 @@ function ProductRow({ category, products }) {
             G3 Lounge
           </p>
 
-          <h2 className="text-2xl font-black text-g3-purple sm:text-3xl">
+          <h2 className="text-2xl font-black text-white sm:text-3xl">
             {category.name}
           </h2>
 
-          <p className="mt-1 max-w-xl text-sm text-gray-500">
+          <p className="mt-1 max-w-xl text-sm text-gray-400">
             {category.description}
           </p>
         </div>
@@ -78,13 +76,13 @@ function ProductRow({ category, products }) {
         </Link>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+      <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
         {products.map((product) => (
           <div
             key={product.id}
-            className="w-[210px] shrink-0 sm:w-[220px] lg:w-[230px]"
+            className="w-[230px] shrink-0 sm:w-[250px] lg:w-[280px] xl:w-[300px]"
           >
-            <ProductCardMembers product={product} />
+            <ProductCard product={product} />
           </div>
         ))}
       </div>

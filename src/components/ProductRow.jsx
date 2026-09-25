@@ -44,9 +44,7 @@
 
 
 import { ChevronRight } from "lucide-react";
-
 import { Link } from "react-router-dom";
-
 import ProductCard from "./ProductCard";
 
 function ProductRow({ category, products }) {
@@ -64,7 +62,7 @@ function ProductRow({ category, products }) {
             {category.name}
           </h2>
 
-          <p className="mt-1 max-w-xl text-sm text-gray-500">
+          <p className="mt-1 max-w-xl text-sm text-gray-400">
             {category.description}
           </p>
         </div>
@@ -78,11 +76,11 @@ function ProductRow({ category, products }) {
         </Link>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+      <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
         {products.map((product) => (
           <div
             key={product.id}
-            className="w-[210px] shrink-0 sm:w-[220px] lg:w-[230px]"
+            className="w-[230px] shrink-0 sm:w-[250px] lg:w-[280px] xl:w-[300px]"
           >
             <ProductCard product={product} />
           </div>

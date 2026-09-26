@@ -1,27 +1,25 @@
 import { ChevronRight } from "lucide-react";
-
 import { Link } from "react-router-dom";
-
 import ProductCard from "./ProductCard";
 
 function ProductRow({ category, products }) {
-  if (!products.length) return null;
+  if (!products?.length) return null;
 
   return (
     <section className="py-10">
       <div className="mb-5 flex items-end justify-between gap-4">
-        <div className="min-w-0">
+        <div>
           <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-g3-gold">
             G3 Lounge
           </p>
-
           <h2 className="text-2xl font-black text-white sm:text-3xl">
             {category.name}
           </h2>
-
-          <p className="mt-1 max-w-xl text-sm text-gray-500">
-            {category.description}
-          </p>
+          {category.description && (
+            <p className="mt-1 max-w-xl text-sm text-white/55">
+              {category.description}
+            </p>
+          )}
         </div>
 
         <Link
@@ -33,14 +31,10 @@ function ProductRow({ category, products }) {
         </Link>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+      {/* Same cards as Shop — only the ROW gets the pink scrollbar */}
+      <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-g3">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="w-[210px] shrink-0 sm:w-[220px] lg:w-[230px]"
-          >
-            <ProductCard product={product} />
-          </div>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </section>

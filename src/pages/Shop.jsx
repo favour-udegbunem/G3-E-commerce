@@ -12,6 +12,8 @@ import {
   categories,
   getProductsByCategory,
   products,
+  occasions,
+  ageRanges,
 } from "../data/products";
 
 import ProductCard from "../components/ProductCard";
@@ -23,10 +25,16 @@ function Shop() {
 
   const categoryFromUrl = searchParams.get("category") || "all";
   const searchFromUrl = searchParams.get("search") || "";
+  const occasionFromUrl = searchParams.get("occasion") || "all";
+  const ageFromUrl = searchParams.get("age") || "all";
+  const typeFromUrl = searchParams.get("type") || "all";
 
   const [searchTerm, setSearchTerm] = useState(searchFromUrl);
   const [selectedCategory, setSelectedCategory] =
     useState(categoryFromUrl);
+  const [selectedOccasion, setSelectedOccasion] = useState(occasionFromUrl);
+  const [selectedAge, setSelectedAge] = useState(ageFromUrl);
+  const [selectedType, setSelectedType] = useState(typeFromUrl);
 
   const [sortBy, setSortBy] = useState("featured");
   const [mobileFiltersOpen, setMobileFiltersOpen] =
@@ -40,6 +48,18 @@ function Shop() {
     setSelectedCategory(categoryFromUrl);
   }, [categoryFromUrl]);
 
+  useEffect(() => {
+    setSelectedOccasion(occasionFromUrl);
+  }, [occasionFromUrl]);
+
+  useEffect(() => {
+    setSelectedAge(ageFromUrl);
+  }, [ageFromUrl]);
+
+  useEffect(() => {
+    setSelectedType(typeFromUrl);
+  }, [typeFromUrl]);
+
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
 
@@ -52,6 +72,31 @@ function Shop() {
     }
 
     setSearchParams(newParams);
+  };
+
+  const updateParam = (key, value, allValue = "all") => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value === allValue) {
+      newParams.delete(key);
+    } else {
+      newParams.set(key, value);
+    }
+    setSearchParams(newParams);
+  };
+
+  const handleOccasionChange = (id) => {
+    setSelectedOccasion(id);
+    updateParam("occasion", id);
+  };
+
+  const handleAgeChange = (id) => {
+    setSelectedAge(id);
+    updateParam("age", id);
+  };
+
+  const handleTypeChange = (id) => {
+    setSelectedType(id);
+    updateParam("type", id);
   };
 
   const handleSearch = (event) => {
@@ -78,11 +123,26 @@ function Shop() {
   }, [selectedCategory]);
 
   const filteredProducts = useMemo(() => {
-    const normalizedSearch = searchFromUrl
-      .trim()
-      .toLowerCase();
+    const normalizedSearch = searchFromUrl.trim().toLowerCase();
 
     let result = [...categoryProducts];
+
+    // PRD: packages vs items
+    if (selectedType === "package") {
+      result = result.filter((p) => p.type === "package");
+    } else if (selectedType === "item") {
+      result = result.filter((p) => p.type !== "package");
+    }
+
+    // PRD: occasion
+    if (selectedOccasion !== "all") {
+      result = result.filter((p) => p.occasion === selectedOccasion);
+    }
+
+    // PRD: age range
+    if (selectedAge !== "all") {
+      result = result.filter((p) => p.ageRange === selectedAge);
+    }
 
     if (normalizedSearch) {
       result = result.filter((product) => {
@@ -90,6 +150,9 @@ function Shop() {
           product.name,
           product.description,
           product.category,
+          product.occasion,
+          product.ageRange,
+          ...(product.contents || []),
         ]
           .filter(Boolean)
           .join(" ")
@@ -108,16 +171,20 @@ function Shop() {
     }
 
     if (sortBy === "name") {
-      result.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
+      result.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     if (sortBy === "newest") {
       result.sort(
         (a, b) =>
-          Number(Boolean(b.newArrival)) -
-          Number(Boolean(a.newArrival))
+          Number(Boolean(b.newArrival)) - Number(Boolean(a.newArrival))
+      );
+    }
+
+    if (sortBy === "featured") {
+      result.sort(
+        (a, b) =>
+          Number(Boolean(b.featured)) - Number(Boolean(a.featured))
       );
     }
 
@@ -126,6 +193,9 @@ function Shop() {
     categoryProducts,
     searchFromUrl,
     sortBy,
+    selectedOccasion,
+    selectedAge,
+    selectedType,
   ]);
 
   const activeCategoryName =
@@ -206,6 +276,101 @@ function Shop() {
                 }`}
               >
                 {category.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* PRD FILTERS: Type · Age · Occasion */}
+      <section className="border-b border-white/10 bg-[#0F001C]">
+        <div className="mx-auto max-w-7xl space-y-4 px-4 py-5 sm:px-6 lg:px-8">
+          {/* Type */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mr-1 text-[10px] font-black uppercase tracking-wider text-white/40">
+              Show
+            </span>
+            {[
+              { id: "all", label: "All" },
+              { id: "package", label: "Girl Packages" },
+              { id: "item", label: "Single Items" },
+            ].map((opt) => (
+              <button
+                key={opt.id}
+                type="button"
+                onClick={() => handleTypeChange(opt.id)}
+                className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                  selectedType === opt.id
+                    ? "bg-g3-gold text-[#0F001C]"
+                    : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Age */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mr-1 text-[10px] font-black uppercase tracking-wider text-white/40">
+              Age
+            </span>
+            <button
+              type="button"
+              onClick={() => handleAgeChange("all")}
+              className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                selectedAge === "all"
+                  ? "bg-g3-pink text-white"
+                  : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
+              }`}
+            >
+              All ages
+            </button>
+            {ageRanges.map((age) => (
+              <button
+                key={age.id}
+                type="button"
+                onClick={() => handleAgeChange(age.id)}
+                className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                  selectedAge === age.id
+                    ? "bg-g3-pink text-white"
+                    : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
+                }`}
+              >
+                {age.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Occasion */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="mr-1 text-[10px] font-black uppercase tracking-wider text-white/40">
+              Occasion
+            </span>
+            <button
+              type="button"
+              onClick={() => handleOccasionChange("all")}
+              className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                selectedOccasion === "all"
+                  ? "bg-g3-purple text-white"
+                  : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
+              }`}
+            >
+              All occasions
+            </button>
+            {occasions.map((occ) => (
+              <button
+                key={occ.id}
+                type="button"
+                onClick={() => handleOccasionChange(occ.id)}
+                className={`rounded-full px-4 py-2 text-xs font-bold transition ${
+                  selectedOccasion === occ.id
+                    ? "bg-g3-purple text-white"
+                    : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
+                }`}
+              >
+                {occ.name}
               </button>
             ))}
           </div>

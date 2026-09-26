@@ -8,10 +8,7 @@ import {
   Sparkles,
   ShoppingBag,
   Shirt,
-  SprayCan,
   Star,
-  WalletCards,
-  Droplets,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -24,6 +21,9 @@ import {
   categories,
   getProductsByCategory,
   products,
+  getPackages,
+  ageRanges,
+  occasions,
 } from "../data/products";
 
 const categoryIcons = {
@@ -51,11 +51,10 @@ function Home() {
     .filter(Boolean);
 
   const newArrivals = products.filter((product) => product.newArrival);
+  const packages = getPackages().filter((p) => p.featured).slice(0, 8);
 
   return (
     <main className="bg-[#0F001C]">
-
-      {/* HERO */}
       <HeroCarousel />
 
       {/* SHOP BY CATEGORY */}
@@ -66,11 +65,9 @@ function Home() {
               <p className="mb-1 text-xs font-black uppercase tracking-[0.2em] text-g3-gold">
                 Explore
               </p>
-
               <h2 className="text-2xl font-black text-white sm:text-3xl">
                 Shop by Category
               </h2>
-
               <p className="mt-1 text-sm text-white/55">
                 Find something special for every part of her everyday life.
               </p>
@@ -98,7 +95,6 @@ function Home() {
                   <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-white shadow-sm transition group-hover:bg-g3-gold group-hover:text-white">
                     <Icon size={22} />
                   </div>
-
                   <span className="text-xs font-bold text-white transition group-hover:text-white">
                     {category.name}
                   </span>
@@ -118,23 +114,20 @@ function Home() {
       </section>
 
       {/* G3 LOUNGE PICKS */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 bg-[#0F001C]">
+      <section className="mx-auto max-w-7xl bg-[#0F001C] px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
             <div className="mb-2 flex items-center gap-2 text-g3-gold">
               <Sparkles size={17} />
-
               <span className="text-xs font-black uppercase tracking-[0.2em]">
                 Handpicked for her
               </span>
             </div>
-
             <h2 className="text-2xl font-black text-white sm:text-3xl">
               G3 Lounge Picks
             </h2>
-
             <p className="mt-1 text-sm text-white/55">
-              A few things we think she'll love.
+              A few things we think she&apos;ll love.
             </p>
           </div>
 
@@ -157,12 +150,10 @@ function Home() {
               <ChevronLeft size={20} />
             </button>
 
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            {/* pink scrollbar */}
+            <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-g3">
               {loungePicks.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
 
@@ -181,6 +172,78 @@ function Home() {
         )}
       </section>
 
+
+      {/* FEATURED GIRL PACKAGES (PRD) */}
+      <section className="border-y border-white/10 bg-[#0F001C]">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-1 text-xs font-black uppercase tracking-[0.2em] text-g3-gold">
+                Curated for her
+              </p>
+              <h2 className="text-2xl font-black text-white sm:text-3xl">
+                Girl Packages
+              </h2>
+              <p className="mt-1 max-w-xl text-sm text-white/55">
+                Thoughtfully curated boxes for birthdays, school, period care,
+                self-care and more — so parents don&apos;t have to hunt for each item.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to="/shop?type=package"
+                className="inline-flex items-center gap-1 rounded-full bg-g3-pink px-5 py-2.5 text-sm font-black text-white transition hover:bg-g3-gold hover:text-[#0F001C]"
+              >
+                Shop packages
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/custom-box"
+                className="inline-flex items-center gap-1 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-white/10"
+              >
+                Customise a box
+              </Link>
+            </div>
+          </div>
+
+          {/* Shop by age */}
+          <div className="mb-6 flex flex-wrap gap-2">
+            {ageRanges.map((age) => (
+              <Link
+                key={age.id}
+                to={`/shop?type=package&age=${age.id}`}
+                className="rounded-full bg-white/10 px-4 py-2 text-xs font-bold text-white/70 transition hover:bg-g3-pink hover:text-white"
+              >
+                {age.name}
+              </Link>
+            ))}
+          </div>
+
+          {packages.length > 0 ? (
+            <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-g3">
+              {packages.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-white/50">Packages coming soon.</p>
+          )}
+
+          {/* Occasions strip */}
+          <div className="mt-8 flex flex-wrap gap-2">
+            {occasions.slice(0, 6).map((occ) => (
+              <Link
+                key={occ.id}
+                to={`/shop?type=package&occasion=${occ.id}`}
+                className="rounded-full border border-white/10 px-4 py-2 text-xs font-bold capitalize text-white/60 transition hover:border-g3-gold hover:text-g3-gold"
+              >
+                {occ.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* NEW ARRIVALS */}
       <section className="bg-[#0F001C]">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -188,16 +251,13 @@ function Home() {
             <div>
               <div className="mb-2 flex items-center gap-2 text-g3-pink">
                 <Star size={17} />
-
                 <span className="text-xs font-black uppercase tracking-[0.2em]">
                   Fresh in
                 </span>
               </div>
-
               <h2 className="text-2xl font-black text-white sm:text-3xl">
                 New Arrivals
               </h2>
-
               <p className="mt-1 text-sm text-white/55">
                 Fresh finds just added to G3 Lounge.
               </p>
@@ -213,8 +273,7 @@ function Home() {
           </div>
 
           <div className="grid gap-5 lg:grid-cols-[280px_1fr]">
-
-            {/* NEW ARRIVALS PROMO CARD */}
+            {/* Promo card */}
             <div className="relative hidden min-h-[360px] overflow-hidden rounded-3xl bg-g3-purple p-7 lg:flex lg:flex-col lg:justify-between">
               <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-g3-pink/30 blur-3xl" />
 
@@ -222,13 +281,11 @@ function Home() {
                 <span className="inline-flex rounded-full bg-g3-gold px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-white">
                   Just added
                 </span>
-
                 <h3 className="mt-5 text-3xl font-black leading-tight text-white">
                   Something
                   <br />
                   new for her.
                 </h3>
-
                 <p className="mt-4 text-sm leading-6 text-white/70">
                   Discover fresh products and little finds that make everyday
                   moments more special.
@@ -244,15 +301,12 @@ function Home() {
               </Link>
             </div>
 
-            {/* PRODUCTS */}
+            {/* Products — THIS is the New Arrivals scrollbar */}
             <div className="relative min-w-0">
               {newArrivals.length > 0 ? (
-                <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                <div className="flex gap-4 overflow-x-auto pb-5 scrollbar-g3">
                   {newArrivals.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                    />
+                    <ProductCard key={product.id} product={product} />
                   ))}
                 </div>
               ) : (
@@ -275,7 +329,7 @@ function Home() {
         </div>
       </section>
 
-      {/* CATEGORY PRODUCT SECTIONS */}
+      {/* CATEGORY ROWS (ProductRow should also use scrollbar-g3) */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {categories.map((category) => {
           const categoryProducts = getProductsByCategory(category.id);
@@ -290,30 +344,26 @@ function Home() {
         })}
       </section>
 
-      {/* PROMOTIONAL CTA */}
+      {/* CTA */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[2rem] bg-g3-purple px-6 py-10 sm:px-10 lg:px-14 lg:py-14">
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-g3-pink/30 blur-3xl" />
-
           <div className="absolute -bottom-24 left-1/3 h-64 w-64 rounded-full bg-g3-light-purple/20 blur-3xl" />
 
           <div className="relative z-10 max-w-2xl">
             <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-g3-light-purple">
               G3 Lounge
             </span>
-
             <h2 className="mt-5 text-3xl font-black text-white sm:text-4xl">
               Make her next moment a special one.
             </h2>
-
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
               From little everyday essentials to thoughtful gifts, find
               something she will actually love.
             </p>
-
             <Link
               to="/shop"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-g3-gold px-6 py-3 text-sm font-black text-[#0F001C] transition hover:bg-white/5 hover:text-white"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-g3-gold px-6 py-3 text-sm font-black text-[#0F001C] transition hover:bg-white hover:text-[#0F001C]"
             >
               Explore G3 Lounge
               <ArrowRight size={17} />
@@ -322,73 +372,50 @@ function Home() {
         </div>
       </section>
 
-      {/* WHY G3 LOUNGE */}
+      {/* WHY G3 */}
       <section className="border-t border-white/10 bg-g3-light-pink/30">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-g3-gold">
               Why G3 Lounge
             </p>
-
             <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
               Shopping made around her.
             </h2>
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-
             <div className="text-center">
-              <p className="text-3xl font-black text-white">
-                01
-              </p>
-
-              <h3 className="mt-3 text-lg font-black text-white">
-                Made for her
-              </h3>
-
+              <p className="text-3xl font-black text-white">01</p>
+              <h3 className="mt-3 text-lg font-black text-white">Made for her</h3>
               <p className="mt-2 text-sm leading-6 text-white/55">
                 Products selected around the everyday needs, style and
                 experiences of girls.
               </p>
             </div>
-
             <div className="text-center">
-              <p className="text-3xl font-black text-g3-gold">
-                02
-              </p>
-
-              <h3 className="mt-3 text-lg font-black text-white">
-                Easy shopping
-              </h3>
-
+              <p className="text-3xl font-black text-g3-gold">02</p>
+              <h3 className="mt-3 text-lg font-black text-white">Easy shopping</h3>
               <p className="mt-2 text-sm leading-6 text-white/55">
                 Find what you need, add it to your G3 Box and place your order
                 without unnecessary steps.
               </p>
             </div>
-
             <div className="text-center">
-              <p className="text-3xl font-black text-g3-pink">
-                03
-              </p>
-
+              <p className="text-3xl font-black text-g3-pink">03</p>
               <h3 className="mt-3 text-lg font-black text-white">
                 Thoughtful choices
               </h3>
-
               <p className="mt-2 text-sm leading-6 text-white/55">
                 Everyday products, personal-care essentials and gifts brought
                 together in one convenient place.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* REUSABLE FOOTER */}
       <Footer />
-
     </main>
   );
 }

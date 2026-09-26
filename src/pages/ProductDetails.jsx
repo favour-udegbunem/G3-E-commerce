@@ -613,6 +613,46 @@ function ProductDetails() {
                 "A thoughtful G3 Lounge pick selected with her everyday needs, style and experience in mind."}
             </p>
 
+            {/* PACKAGE META + WHAT'S INCLUDED (PRD) */}
+            {product.type === "package" && (
+              <div className="mt-6 space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {product.ageRange && (
+                    <span className="rounded-full bg-g3-pink/20 px-3 py-1 text-xs font-bold text-g3-pink">
+                      Ages {product.ageRange}
+                    </span>
+                  )}
+                  {product.occasion && (
+                    <span className="rounded-full bg-g3-gold/15 px-3 py-1 text-xs font-bold capitalize text-g3-gold">
+                      {String(product.occasion).replace(/-/g, " ")}
+                    </span>
+                  )}
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/70">
+                    Curated Package
+                  </span>
+                </div>
+
+                {Array.isArray(product.contents) && product.contents.length > 0 && (
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <p className="text-xs font-black uppercase tracking-wider text-g3-gold">
+                      What&apos;s included
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {product.contents.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-sm text-white/75"
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-g3-pink" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* QUANTITY */}
             <div className="mt-8">
               <p className="mb-3 text-sm font-black text-white">

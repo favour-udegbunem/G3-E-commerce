@@ -160,9 +160,9 @@ function MemberDashboard() {
                 </div>
 
                 <div className="rounded-3xl bg-white/5 p-6 ring-1 ring-white/10">
-                  <div className="flex items-center gap-2 text-g3-purple">
+                  <div className="flex items-center gap-2 text-white">
                     <TrendingUp size={18} />
-                    <span className="text-xs font-black uppercase tracking-wider">Progress</span>
+                    <span className="text-xs font-black text-white uppercase tracking-wider">Progress</span>
                   </div>
                   <div className="mt-4">
                     <TierProgress

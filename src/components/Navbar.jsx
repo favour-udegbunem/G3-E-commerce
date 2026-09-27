@@ -244,7 +244,7 @@ function Navbar() {
             <Link
               to="/login"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center gap-2 rounded-xl border border-g3-purple/10 px-5 py-3.5 text-sm font-bold text-g3-purple transition hover:bg-g3-light-purple/10"
+              className="flex items-center justify-center gap-2 text-white rounded-xl border border-g3-purple/10 px-5 py-3.5 text-sm font-bold text-g3-purple transition hover:bg-g3-light-purple/10"
             >
               <LogIn size={18} />
               Log In
@@ -263,12 +263,12 @@ function Navbar() {
             <Link
               to="/wishlist"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold text-g3-purple transition hover:bg-g3-light-purple/10"
+              className="flex items-center justify-between text-white rounded-xl px-4 py-3.5 text-sm font-semibold text-g3-purple transition hover:bg-g3-light-purple/10"
             >
-              <span className="flex items-center gap-3">
+              <span className="flex items-center text-white gap-3">
                 <Heart
                   size={19}
-                  className={
+                  className={ 
                     wishlistCount > 0
                       ? "text-g3-pink"
                       : ""
@@ -294,9 +294,9 @@ function Navbar() {
             <Link
               to="/box"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-semibold text-g3-purple transition hover:bg-g3-light-purple/10"
+              className="flex items-center justify-between text-white rounded-xl px-4 py-3.5 text-sm font-semibold text-g3-purple transition hover:bg-g3-light-purple/10"
             >
-              <span className="flex items-center gap-3">
+              <span className="flex items-center gap-3 text-white">
                 <ShoppingBag size={19} />
                 My G3 Box
               </span>
@@ -316,7 +316,7 @@ function Navbar() {
                   : "/login"
               }
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm font-semibold text-g3-purple transition hover:bg-g3-light-purple/10"
+              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm font-semibold text-white transition hover:bg-g3-light-purple/10"
             >
               <Package size={19} />
               My Orders

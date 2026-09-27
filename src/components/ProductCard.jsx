@@ -40,7 +40,7 @@
 //           onLoad={() => setImageLoaded(true)}
 //           className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${
 //             imageLoaded ? "opacity-100" : "opacity-0"
-//           } ${isEarlyAccessLocked ? "opacity-80" : ""}`}
+//           }`}
 //         />
 
 //         {product.newArrival && (
@@ -91,16 +91,11 @@
 //             addToCart(product);
 //           }}
 //           disabled={isEarlyAccessLocked}
-//           className={`absolute bottom-3 right-3 z-20 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full shadow-md transition ${
+//           className={`absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full shadow-md transition ${
 //             isEarlyAccessLocked
 //               ? "cursor-not-allowed bg-white/80 text-g3-purple"
-//               : "bg-white text-g3-purple hover:bg-g3-gold hover:text-white"
+//               : "cursor-pointer bg-white text-g3-purple hover:bg-g3-gold hover:text-white"
 //           }`}
-//           aria-label={
-//             isEarlyAccessLocked
-//               ? "Members early access only"
-//               : `Add ${product.name} to G3 Box`
-//           }
 //         >
 //           {isEarlyAccessLocked ? <Lock size={16} /> : <ShoppingBag size={16} />}
 //         </button>
@@ -176,7 +171,7 @@ function ProductCard({ product }) {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="group flex w-[220px] min-w-[220px] max-w-[220px] shrink-0 cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A002E] transition duration-300 hover:-translate-y-1 hover:border-g3-gold/40 hover:shadow-xl"
+      className="group flex h-full w-full min-w-0 cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A002E] transition duration-300 hover:-translate-y-1 hover:border-g3-gold/40 hover:shadow-xl"
     >
       <div className="relative aspect-square w-full overflow-hidden bg-white/5">
         {!imageLoaded && (
@@ -251,9 +246,9 @@ function ProductCard({ product }) {
         </button>
       </div>
 
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
         <div className="mb-2 flex items-start justify-between gap-2">
-          <h3 className="line-clamp-2 text-sm font-bold leading-snug text-white">
+          <h3 className="line-clamp-2 text-xs font-bold leading-snug text-white sm:text-sm">
             {product.name}
           </h3>
           <ArrowUpRight
@@ -262,7 +257,7 @@ function ProductCard({ product }) {
           />
         </div>
 
-        <p className="text-base font-black text-white">
+        <p className="text-sm font-black text-white sm:text-base">
           ₦{Number(product.price).toLocaleString()}
         </p>
 

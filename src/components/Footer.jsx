@@ -95,17 +95,8 @@ function Footer() {
               <Link to="/login" className="block transition hover:text-white">
                 Login / Register
               </Link>
-<<<<<<< HEAD
               <Link to="/policies" className="block transition hover:text-white">Shipping, Delivery & Returns</Link>
               <Link to="/privacy" className="block transition hover:text-white">Privacy Policy</Link>
-=======
-              <a href="#" className="block transition hover:text-white">
-                Shipping & Delivery
-              </a>
-              <a href="#" className="block transition hover:text-white">
-                Returns & Support
-              </a>
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
             </div>
           </div>
 
@@ -118,19 +109,11 @@ function Footer() {
             <div className="mt-5 space-y-4 text-sm text-white/60">
               <div className="flex items-start gap-3">
                 <Mail size={16} className="mt-0.5 shrink-0 text-g3-gold" />
-<<<<<<< HEAD
                 <span>globalgiantgirls@gmail.com</span>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={16} className="mt-0.5 shrink-0 text-g3-gold" />
                 <span>+234 8147091047</span>
-=======
-                <span>hello@g3lounge.com</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone size={16} className="mt-0.5 shrink-0 text-g3-gold" />
-                <span>+234 XXX XXX XXXX</span>
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-g3-gold" />
@@ -152,17 +135,8 @@ function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-center text-xs text-white/40 sm:flex-row sm:text-left">
           <p>© {new Date().getFullYear()} G3 Lounge. All rights reserved.</p>
           <div className="flex gap-6">
-<<<<<<< HEAD
             <Link to="/privacy" className="transition hover:text-white">Privacy Policy</Link>
             <Link to="/terms" className="transition hover:text-white">Terms & Conditions</Link>
-=======
-            <a href="#" className="transition hover:text-white">
-              Privacy Policy
-            </a>
-            <a href="#" className="transition hover:text-white">
-              Terms of Service
-            </a>
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
           </div>
         </div>
       </div>

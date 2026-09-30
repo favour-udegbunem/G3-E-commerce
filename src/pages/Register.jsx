@@ -21,8 +21,7 @@ function Register() {
   const { registerUser } = useTier();
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -49,11 +48,7 @@ function Register() {
     }
   };
 
-<<<<<<< HEAD
   const handleSubmit = async (event) => {
-=======
-  const handleSubmit = (event) => {
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     event.preventDefault();
 
     if (
@@ -69,9 +64,7 @@ function Register() {
     }
 
     if (formData.password.length < 8) {
-      setError(
-        "Your password must contain at least 8 characters."
-      );
+      setError("Your password must contain at least 8 characters.");
       return;
     }
 
@@ -80,24 +73,24 @@ function Register() {
       return;
     }
 
-<<<<<<< HEAD
     let registeredUser;
+
     try {
       registeredUser = await registerUser(formData);
     } catch (error) {
       setError(error.message || "Could not create your account.");
       return;
     }
-=======
-    const registeredUser = registerUser(formData);
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
     if (!registeredUser) {
-      setError("An account already exists with this email address. Please log in instead.");
+      setError(
+        "An account already exists with this email address. Please log in instead."
+      );
       return;
     }
 
     const redirect = searchParams.get("redirect");
+
     navigate(redirect || "/account");
   };
 
@@ -111,24 +104,18 @@ function Register() {
 
   return (
     <main className="bg-[#0F001C]">
-
       {/* MAIN AUTH SECTION */}
       <section className="min-h-[calc(100vh-100px)] py-10 sm:py-14">
-
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
           <div className="grid overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-xl lg:grid-cols-[0.85fr_1.15fr]">
-
             {/* LEFT SIDE */}
             <div className="relative hidden overflow-hidden bg-g3-purple p-10 text-white lg:block xl:p-14">
-
               {/* Decorative circles */}
               <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-g3-pink/20 blur-3xl" />
 
               <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-g3-light-purple/20 blur-3xl" />
 
               <div className="relative flex h-full flex-col">
-
                 <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-g3-light-purple">
                   <UserPlus size={14} />
                   Join G3 Lounge
@@ -142,12 +129,11 @@ function Register() {
                 </h1>
 
                 <p className="mt-5 max-w-md text-sm leading-6 text-white/65">
-                  Create your free G3 Lounge account and get
-                  more from every visit.
+                  Create your free G3 Lounge account and get more from every
+                  visit.
                 </p>
 
                 <div className="mt-10 space-y-4">
-
                   {benefits.map((benefit) => (
                     <div
                       key={benefit}
@@ -162,19 +148,13 @@ function Register() {
                       </span>
                     </div>
                   ))}
-
                 </div>
 
                 <div className="mt-auto pt-12">
-
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-g3-light-pink text-g3-pink">
-                        <Heart
-                          size={18}
-                          fill="currentColor"
-                        />
+                        <Heart size={18} fill="currentColor" />
                       </div>
 
                       <div>
@@ -187,22 +167,16 @@ function Register() {
                         </p>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
             </div>
 
             {/* RIGHT SIDE */}
             <div className="p-6 sm:p-10 lg:p-12">
-
               {/* MOBILE BRANDING */}
               <div className="mb-8 lg:hidden">
-
                 <div className="flex items-center gap-3">
-
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-g3-light-pink text-g3-pink">
                     <UserPlus size={22} />
                   </div>
@@ -216,14 +190,11 @@ function Register() {
                       Create your account
                     </h1>
                   </div>
-
                 </div>
-
               </div>
 
               {/* FORM HEADER */}
               <div>
-
                 <p className="hidden text-xs font-black uppercase tracking-[0.2em] text-g3-pink lg:block">
                   Welcome to the Lounge
                 </p>
@@ -233,10 +204,9 @@ function Register() {
                 </h2>
 
                 <p className="mt-2 text-sm leading-6 text-white/55">
-                  Join G3 Lounge and make your shopping
-                  experience more personal.
+                  Join G3 Lounge and make your shopping experience more
+                  personal.
                 </p>
-
               </div>
 
               {/* ERROR */}
@@ -251,10 +221,8 @@ function Register() {
                 onSubmit={handleSubmit}
                 className="mt-7 space-y-5"
               >
-
                 {/* NAME */}
                 <div className="grid gap-5 sm:grid-cols-2">
-
                   <div>
                     <label
                       htmlFor="firstName"
@@ -292,7 +260,6 @@ function Register() {
                       className="mt-2 h-12 w-full rounded-xl border border-white/15 bg-[#0F001C] px-4 text-sm text-white/90 outline-none transition placeholder:text-white/45 focus:border-g3-light-purple focus:bg-white/5 focus:ring-4 focus:ring-g3-light-purple/10"
                     />
                   </div>
-
                 </div>
 
                 {/* EMAIL */}
@@ -341,7 +308,10 @@ function Register() {
                     htmlFor="referredBy"
                     className="text-xs font-bold text-white/80"
                   >
-                    Referral Code <span className="font-normal text-white/45">(Optional)</span>
+                    Referral Code{" "}
+                    <span className="font-normal text-white/45">
+                      (Optional)
+                    </span>
                   </label>
 
                   <input
@@ -369,7 +339,6 @@ function Register() {
                   </label>
 
                   <div className="relative mt-2">
-
                     <LockKeyhole
                       size={17}
                       className="absolute left-4 top-1/2 -translate-y-1/2 text-white/45"
@@ -378,11 +347,7 @@ function Register() {
                     <input
                       id="password"
                       name="password"
-                      type={
-                        showPassword
-                          ? "text"
-                          : "password"
-                      }
+                      type={showPassword ? "text" : "password"}
                       value={formData.password}
                       onChange={handleChange}
                       placeholder="Create a password"
@@ -392,15 +357,11 @@ function Register() {
                     <button
                       type="button"
                       onClick={() =>
-                        setShowPassword(
-                          (current) => !current
-                        )
+                        setShowPassword((current) => !current)
                       }
                       className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/45 transition hover:bg-white/10 hover:text-white"
                       aria-label={
-                        showPassword
-                          ? "Hide password"
-                          : "Show password"
+                        showPassword ? "Hide password" : "Show password"
                       }
                     >
                       {showPassword ? (
@@ -409,7 +370,6 @@ function Register() {
                         <Eye size={17} />
                       )}
                     </button>
-
                   </div>
 
                   <p className="mt-2 text-[11px] text-white/45">
@@ -427,7 +387,6 @@ function Register() {
                   </label>
 
                   <div className="relative mt-2">
-
                     <LockKeyhole
                       size={17}
                       className="absolute left-4 top-1/2 -translate-y-1/2 text-white/45"
@@ -436,11 +395,7 @@ function Register() {
                     <input
                       id="confirmPassword"
                       name="confirmPassword"
-                      type={
-                        showConfirmPassword
-                          ? "text"
-                          : "password"
-                      }
+                      type={showConfirmPassword ? "text" : "password"}
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       placeholder="Enter your password again"
@@ -450,9 +405,7 @@ function Register() {
                     <button
                       type="button"
                       onClick={() =>
-                        setShowConfirmPassword(
-                          (current) => !current
-                        )
+                        setShowConfirmPassword((current) => !current)
                       }
                       className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white/45 transition hover:bg-white/10 hover:text-white"
                       aria-label={
@@ -467,13 +420,11 @@ function Register() {
                         <Eye size={17} />
                       )}
                     </button>
-
                   </div>
                 </div>
 
                 {/* TERMS */}
                 <div className="flex items-start gap-3">
-
                   <input
                     id="terms"
                     type="checkbox"
@@ -485,11 +436,9 @@ function Register() {
                     htmlFor="terms"
                     className="text-xs leading-5 text-white/55"
                   >
-                    I agree to the G3 Lounge terms and understand
-                    that my account will be used to provide my
-                    member experience.
+                    I agree to the G3 Lounge terms and understand that my
+                    account will be used to provide my member experience.
                   </label>
-
                 </div>
 
                 {/* SUBMIT */}
@@ -500,12 +449,10 @@ function Register() {
                   Create My G3 Account
                   <ArrowRight size={17} />
                 </button>
-
               </form>
 
               {/* LOGIN */}
               <div className="mt-7 border-t border-white/10 pt-6 text-center">
-
                 <p className="text-sm text-white/55">
                   Already have a G3 Lounge account?
                 </p>
@@ -517,31 +464,23 @@ function Register() {
                   Log in
                   <ArrowRight size={15} />
                 </Link>
-
               </div>
 
               {/* GUEST SHOPPING */}
               <div className="mt-6 text-center">
-
                 <Link
                   to="/shop"
                   className="text-xs font-semibold text-white/45 transition hover:text-white"
                 >
                   Continue shopping without an account
                 </Link>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
       <Footer />
-
     </main>
   );
 }

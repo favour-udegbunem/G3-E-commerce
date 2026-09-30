@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // import {
 //   ArrowLeft,
 //   ArrowRight,
@@ -876,7 +874,6 @@
 
 
 
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 import {
   ArrowLeft,
   ArrowRight,
@@ -893,11 +890,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import LoungeSidebar from "../components/LoungeSidebar";
-<<<<<<< HEAD
 import { useProducts } from "../context/ProductContext";
-=======
-import { products } from "../data/products";
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 import TierGate from "../components/TierGate";
 import { useTier } from "../context/TierContext";
 
@@ -911,10 +904,7 @@ function isWelcomeGiftItem(item) {
 
 function GiftBox() {
   const { currentTier, isAuthenticated } = useTier();
-<<<<<<< HEAD
   const { products } = useProducts();
-=======
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   const [step, setStep] = useState(1);

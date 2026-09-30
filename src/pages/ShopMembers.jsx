@@ -8,25 +8,18 @@ import {
   X,
 } from "lucide-react";
 
-<<<<<<< HEAD
 import { categories } from "../data/products";
-=======
 import {
-  categories,
   getProductsByCategory,
   products,
 } from "../data/membersproduct";
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 import ProductCard from "../components/ProductCardMembers";
 import Footer from "../components/Footer";
 import ShopHeroCarousel from "../components/ShopHeroCarousel";
 import TierGate from "../components/TierGate";
 import { useTier } from "../context/TierContext";
-<<<<<<< HEAD
 import { useProducts } from "../context/ProductContext";
-=======
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 function Shop() {
   const { currentTier, isAuthenticated } = useTier();
@@ -80,7 +73,6 @@ function Shop() {
     setSearchParams(newParams);
   };
 
-<<<<<<< HEAD
   const { products } = useProducts();
 
   const categoryProducts = useMemo(() => {
@@ -88,15 +80,6 @@ function Shop() {
     if (selectedCategory === "all") return memberProducts;
     return memberProducts.filter((product) => product.category === selectedCategory);
   }, [products, selectedCategory]);
-=======
-  const categoryProducts = useMemo(() => {
-    if (selectedCategory === "all") {
-      return products;
-    }
-
-    return getProductsByCategory(selectedCategory);
-  }, [selectedCategory]);
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchFromUrl

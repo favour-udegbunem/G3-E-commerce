@@ -59,18 +59,13 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-<<<<<<< HEAD
   const handleSubmit = async (event) => {
-=======
-  const handleSubmit = (event) => {
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     event.preventDefault();
 
     if (!validateForm()) {
       return;
     }
 
-<<<<<<< HEAD
     try {
       await loginUser(formData.email, formData.password);
       navigate("/account");
@@ -80,19 +75,6 @@ function Login() {
         email: error.message || "Invalid email or password.",
       }));
     }
-=======
-    const loggedIn = loginUser(formData.email);
-
-    if (!loggedIn) {
-      setErrors((previous) => ({
-        ...previous,
-        email: "No G3 account was found for this email. Create an account first.",
-      }));
-      return;
-    }
-
-    navigate("/account");
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
   };
 
   return (

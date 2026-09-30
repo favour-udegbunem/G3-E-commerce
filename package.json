@@ -13,11 +13,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@capacitor/android": "^8.5.2",
     "@capacitor/core": "^8.5.2",
-=======
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     "@tailwindcss/vite": "^4.3.3",
     "lucide-react": "^1.47.0",
     "react": "^19.2.8",
@@ -26,10 +23,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@capacitor/cli": "^8.5.2",
-=======
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
@@ -38,15 +32,8 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
-<<<<<<< HEAD
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
     "vite-plugin-pwa": "^1.3.0"
   }
 }
-=======
-    "vite": "^8.3.0",
-    "vite-plugin-pwa": "^1.3.0"
-  }
-}
->>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c

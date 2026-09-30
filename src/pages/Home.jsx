@@ -51,7 +51,11 @@
 //     .filter(Boolean);
 
 //   const newArrivals = products.filter((product) => product.newArrival);
+<<<<<<< HEAD
 //   const packages = products.filter((p) => p.type === "package" && p.featured).slice(0, 8);
+=======
+//   const packages = getPackages().filter((p) => p.featured).slice(0, 8);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 //   return (
 //     <main className="bg-[#0F001C]">
@@ -332,7 +336,11 @@
 //       {/* CATEGORY ROWS (ProductRow should also use scrollbar-g3) */}
 //       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 //         {categories.map((category) => {
+<<<<<<< HEAD
 //           const categoryProducts = products.filter((product) => product.category === category.id);
+=======
+//           const categoryProducts = getProductsByCategory(category.id);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 //           return (
 //             <ProductRow
@@ -445,10 +453,19 @@ import Footer from "../components/Footer";
 
 import {
   categories,
+<<<<<<< HEAD
   ageRanges,
   occasions,
 } from "../data/products";
 import { useProducts } from "../context/ProductContext";
+=======
+  getProductsByCategory,
+  products,
+  getPackages,
+  ageRanges,
+  occasions,
+} from "../data/products";
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 const categoryIcons = {
   "beauty-self-care": Sparkles,
@@ -470,13 +487,20 @@ const pickNames = [
 ];
 
 function Home() {
+<<<<<<< HEAD
   const { products } = useProducts();
+=======
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
   const loungePicks = pickNames
     .map((name) => products.find((product) => product.name === name))
     .filter(Boolean);
 
   const newArrivals = products.filter((product) => product.newArrival);
+<<<<<<< HEAD
   const packages = products.filter((p) => p.type === "package" && p.featured).slice(0, 8);
+=======
+  const packages = getPackages().filter((p) => p.featured).slice(0, 8);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
   return (
     <main className="bg-[#0F001C]">
@@ -767,7 +791,11 @@ function Home() {
       {/* CATEGORY ROWS */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {categories.map((category) => {
+<<<<<<< HEAD
           const categoryProducts = products.filter((product) => product.category === category.id);
+=======
+          const categoryProducts = getProductsByCategory(category.id);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
           return (
             <ProductRow

@@ -3,7 +3,10 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CartProvider from "./context/CartContext";
 import WishlistProvider from "./context/WishlistContext";
+<<<<<<< HEAD
 import ProductProvider from "./context/ProductContext";
+=======
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 import TierProvider from "./context/TierContext";
 import TierWelcomeModal from "./components/TierWelcomeModal";
 import WelcomeGift from "./components/WelcomeGift";
@@ -31,6 +34,7 @@ import ShopMembers from "./pages/ShopMembers";
 import Tiers from "./pages/Tiers";
 import CustomBox from "./pages/CustomBox";
 import WelcomeGiftPage from "./pages/WelcomeGiftPage";
+<<<<<<< HEAD
 import AdminLogin from "./admin/AdminLogin";
 import AdminProducts from "./admin/AdminProducts";
 import AdminLayout from "./admin/AdminLayout";
@@ -42,6 +46,8 @@ import AdminAnalytics from "./admin/AdminAnalytics";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StorePolicies from "./pages/StorePolicies";
+=======
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 function AppLayout() {
   const location = useLocation();
@@ -68,6 +74,7 @@ function AppLayout() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/custom-box" element={<CustomBox />} />
         <Route path="/welcome-gift" element={<WelcomeGiftPage />} />
+<<<<<<< HEAD
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/policies" element={<StorePolicies />} />
@@ -82,6 +89,8 @@ function AppLayout() {
           <Route path="categories" element={<AdminCategories />} />
           <Route path="analytics" element={<AdminAnalytics />} />
         </Route>
+=======
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
         <Route path="/join" element={<JoinLounge />} />
         <Route path="/register" element={<Register />} />
@@ -109,9 +118,13 @@ function App() {
       <CartProvider>
         <WishlistProvider>
           <TierProvider>
+<<<<<<< HEAD
             <ProductProvider>
               <AppLayout />
             </ProductProvider>
+=======
+            <AppLayout />
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
           </TierProvider>
         </WishlistProvider>
       </CartProvider>

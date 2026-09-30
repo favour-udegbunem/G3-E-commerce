@@ -49,7 +49,11 @@ function Register() {
     }
   };
 
+<<<<<<< HEAD
   const handleSubmit = async (event) => {
+=======
+  const handleSubmit = (event) => {
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     event.preventDefault();
 
     if (
@@ -76,6 +80,7 @@ function Register() {
       return;
     }
 
+<<<<<<< HEAD
     let registeredUser;
     try {
       registeredUser = await registerUser(formData);
@@ -83,6 +88,9 @@ function Register() {
       setError(error.message || "Could not create your account.");
       return;
     }
+=======
+    const registeredUser = registerUser(formData);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
     if (!registeredUser) {
       setError("An account already exists with this email address. Please log in instead.");

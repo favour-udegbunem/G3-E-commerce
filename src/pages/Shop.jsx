@@ -11,7 +11,11 @@
 // import {
 //   categories,
 //   getProductsByCategory,
+<<<<<<< HEAD
 //   products as localProducts,
+=======
+//   products,
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 //   occasions,
 //   ageRanges,
 // } from "../data/products";
@@ -119,7 +123,11 @@
 //       return products;
 //     }
 
+<<<<<<< HEAD
 //     return products.filter((product) => product.category === selectedCategory);
+=======
+//     return getProductsByCategory(selectedCategory);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 //   }, [selectedCategory]);
 
 //   const filteredProducts = useMemo(() => {
@@ -650,17 +658,28 @@ import {
 
 import {
   categories,
+<<<<<<< HEAD
   occasions,
   ageRanges,
 } from "../data/products";
 import { useProducts } from "../context/ProductContext";
+=======
+  getProductsByCategory,
+  products,
+  occasions,
+  ageRanges,
+} from "../data/products";
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import ShopHeroCarousel from "../components/ShopHeroCarousel";
 
 function Shop() {
+<<<<<<< HEAD
   const { products } = useProducts();
+=======
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
   const [searchParams, setSearchParams] = useSearchParams();
 
   const categoryFromUrl = searchParams.get("category") || "all";
@@ -755,6 +774,7 @@ function Shop() {
     setSearchParams({});
   };
 
+<<<<<<< HEAD
 const categoryProducts = useMemo(() => {
   if (selectedCategory === "all") {
     return products;
@@ -764,6 +784,12 @@ const categoryProducts = useMemo(() => {
     (product) => product.category === selectedCategory
   );
 }, [products, selectedCategory]);
+=======
+  const categoryProducts = useMemo(() => {
+    if (selectedCategory === "all") return products;
+    return getProductsByCategory(selectedCategory);
+  }, [selectedCategory]);
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchFromUrl.trim().toLowerCase();

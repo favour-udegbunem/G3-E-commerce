@@ -13,8 +13,12 @@ import {
 } from "lucide-react";
 
 import Footer from "../components/Footer";
+<<<<<<< HEAD
 import { ageRanges, occasions } from "../data/products";
 import { useProducts } from "../context/ProductContext";
+=======
+import { ageRanges, occasions, getPackages, products } from "../data/products";
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
 import { useCart } from "../context/CartContext";
 import { useTier } from "../context/TierContext";
 
@@ -44,10 +48,16 @@ function CustomBox() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { isAuthenticated, currentTier } = useTier();
+<<<<<<< HEAD
   const { products } = useProducts();
 
   const allPackages = useMemo(() => {
     const pkgs = products.filter((p) => p.type === "package");
+=======
+
+  const allPackages = useMemo(() => {
+    const pkgs = getPackages();
+>>>>>>> 00d3d502e7d0cc5ce7ff327d094d601a32a8e35c
     if (pkgs.length > 0) return pkgs;
     return products.filter((p) => p.featured).slice(0, 8).map((p) => ({
       ...p,

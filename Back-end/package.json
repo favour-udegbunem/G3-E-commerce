@@ -1,0 +1,30 @@
+{
+  "name": "g3-lounge-backend",
+  "version": "1.0.0",
+  "description": "G3 Lounge Backend API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "create-admin": "node scripts/createAdmin.js",
+    "check": "find . -type f -name \"*.js\" -not -path \"./node_modules/*\" -print0 | xargs -0 -n1 node --check",
+    "catalog:reset": "node scripts/resetCatalog.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.4",
+    "sequelize": "^6.37.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "sequelize-cli": "^6.6.5"
+  }
+}
